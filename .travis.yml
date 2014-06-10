@@ -1,0 +1,25 @@
+language: python
+python:
+  - "2.7"
+env:
+  - DJANGO=1.6 DB=postgres
+services:
+  - rabbitmq
+  - memcached
+branches:
+  only:
+    - develop
+    - master
+cache:
+  directories:
+    - ~/virtualenv/python2.7/
+install:
+  - pip install -r requirements.txt
+before_script:
+  - psql -c 'create database foo;' -U postgres
+  - cp djangoserviceskeleton/proj/settings/local.example.py djangoserviceskeleton/proj/settings/local.py
+  - cd djangoserviceskeleton
+  - python manage.py syncdb --noinput
+  - python manage.py migrate foo
+script:
+  - python manage.py test

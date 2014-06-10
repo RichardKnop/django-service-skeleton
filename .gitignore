@@ -1,0 +1,4 @@
+venv/
+*.pyc
+djangoserviceskeleton/proj/settings/local.py
+.idea/
