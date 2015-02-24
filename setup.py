@@ -9,7 +9,6 @@ setup(
     license='LICENSE.txt',
     long_description=open('README.md').read(),
     install_requires=[
-        'South==0.8.4',
         'psycopg2==2.5.1',
     ],
 )

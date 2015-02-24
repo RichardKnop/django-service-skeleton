@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import EmailValidator, ValidationError
-from .password import *
+from apps.user.password import *
 
 
 class User(models.Model):

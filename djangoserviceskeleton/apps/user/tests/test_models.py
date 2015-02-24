@@ -1,7 +1,8 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
-from .models import User
-from .password import *
+
+from apps.user.models import User
+from apps.user.password import check
 
 
 class UserTestCase(TestCase):
@@ -39,4 +40,5 @@ class UserTestCase(TestCase):
             )
             u2.full_clean()
 
-        self.assertEqual(str(context.exception.message_dict['__all__'][0]), 'Email not unique')
+        self.assertEqual(str(context.exception.message_dict['__all__'][0]),
+                         'Email not unique')

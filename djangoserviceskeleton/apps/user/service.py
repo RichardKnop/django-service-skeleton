@@ -1,9 +1,13 @@
-from .models import User
+from apps.user.models import User
 
 
-class UserService():
+class UserService(object):
+
+    def __init__(self):
+        self._model = User
+
     def register(self, email, password):
-        user = User(
+        user = self._model(
             email=email,
             password=password,
         )

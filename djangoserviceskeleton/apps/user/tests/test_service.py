@@ -1,6 +1,7 @@
-from .user import UserService
 from django.test import TestCase
 from django.core.exceptions import ValidationError
+
+from apps.user.service import UserService
 
 
 class RegisterTestCase(TestCase):
@@ -11,7 +12,8 @@ class RegisterTestCase(TestCase):
         with self.assertRaises(ValidationError) as context:
             self.service.register('invalid e-mail address', 'password')
 
-        self.assertEqual(context.exception.message_dict['email'][0], 'Enter a valid email address.')
+        self.assertEqual(context.exception.message_dict['email'][0],
+                         'Enter a valid email address.')
 
     def test_register(self):
         self.service.register('foo@example.com', 'password')
@@ -22,4 +24,5 @@ class RegisterTestCase(TestCase):
         with self.assertRaises(ValidationError) as context:
             self.service.register('Foo@examplE.com', 'password')
 
-        self.assertEqual(context.exception.message_dict['__all__'][0], 'Email not unique')
+        self.assertEqual(context.exception.message_dict['__all__'][0],
+                         'Email not unique')

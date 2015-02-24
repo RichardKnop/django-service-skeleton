@@ -1,6 +1,14 @@
 django-service-skeleton
 =======================
 
+A sample Django application with a clean structure.
+All apps live inside apps directory. Settings are inside proj/settings.
+A proj/settings/local.py file defines environment specific settings.
+This can be used as a starting point when building a RESTful web service.
+
+Setup
+-----
+
 Create a virtual environment:
 
 ```
@@ -21,11 +29,10 @@ cp djangoserviceskeleton/proj/settings/local.example.py djangoserviceskeleton/pr
 nano cp djangoserviceskeleton/proj/settings/local.py
 ```
 
-Sync the database and run migrations:
+Run the migrations:
 
 ```
-python djangoserviceskeleton/manage.py syncdb
-python djangoserviceskeleton/manage.py migrate fooservice
+python djangoserviceskeleton/manage.py migrate
 ```
 
 Run tests:

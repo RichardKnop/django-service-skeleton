@@ -1,4 +1,5 @@
 venv/
 *.pyc
+*.sqlite
 djangoserviceskeleton/proj/settings/local.py
 .idea/
